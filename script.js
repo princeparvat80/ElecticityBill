@@ -1,10 +1,19 @@
 document.addEventListener('DOMContentLoaded', (event) => {
     // Load last month's used units from local storage
+    if (localStorage.getItem('princeLastMonth')) {
+        document.getElementById('prince-last-month').value = localStorage.getItem('princeLastMonth');
+    }
     if (localStorage.getItem('princeThisMonth')) {
         document.getElementById('prince-this-month').value = localStorage.getItem('princeThisMonth');
     }
+    if (localStorage.getItem('saurabhLastMonth')) {
+        document.getElementById('saurabh-last-month').value = localStorage.getItem('saurabhLastMonth');
+    }
     if (localStorage.getItem('saurabhThisMonth')) {
         document.getElementById('saurabh-this-month').value = localStorage.getItem('saurabhThisMonth');
+    }
+    if (localStorage.getItem('manishLastMonth')) {
+        document.getElementById('manish-last-month').value = localStorage.getItem('manishLastMonth');
     }
     if (localStorage.getItem('manishThisMonth')) {
         document.getElementById('manish-this-month').value = localStorage.getItem('manishThisMonth');
@@ -49,4 +58,12 @@ function calculateBill() {
         <p>Saurabh: ${saurabhBill.toFixed(2)} Rs (Units Used: ${saurabhUnitsUsed} units) + Common Share: ${commonShare.toFixed(2)} Rs = <strong>${saurabhTotal.toFixed(2)} Rs</strong></p>
         <p>Manish: ${manishBill.toFixed(2)} Rs (Units Used: ${manishUnitsUsed} units) + Common Share: ${commonShare.toFixed(2)} Rs = <strong>${manishTotal.toFixed(2)} Rs</strong></p>
     `;
+
+    // Save current month's data to local storage
+    localStorage.setItem('princeLastMonth', princeLastMonth.toString());
+    localStorage.setItem('princeThisMonth', princeThisMonth.toString());
+    localStorage.setItem('saurabhLastMonth', saurabhLastMonth.toString());
+    localStorage.setItem('saurabhThisMonth', saurabhThisMonth.toString());
+    localStorage.setItem('manishLastMonth', manishLastMonth.toString());
+    localStorage.setItem('manishThisMonth', manishThisMonth.toString());
 }
